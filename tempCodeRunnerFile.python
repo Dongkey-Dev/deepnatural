@@ -1,0 +1,18 @@
+from konlpy.tag import Kkma
+from tqdm import tqdm as tq
+from collections import Counter
+
+kkma = Kkma()
+
+F = open("news_2020_july_12699.txt",'r+', encoding='utf-8')
+F_list = F.readlines()
+
+sentence = []
+for mundan in tq(F_list[0:5]) : 
+    ex_sent = kkma.sentences(mundan)
+    sentence.append(ex_sent)
+
+cnt = Counter(sentence)
+print(cnt.most_common())
+
+
